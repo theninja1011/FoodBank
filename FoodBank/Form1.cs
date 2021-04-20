@@ -12,9 +12,29 @@ namespace FoodBank
 {
     public partial class Form1 : Form
     {
+        public List<People> P { get; set; }
+        
+
         public Form1()
         {
+            P = GetPerson();
             InitializeComponent();
+        }
+
+        private List<People> GetPerson()
+        {
+            var list = new List<People>();
+            list.Add(new People()
+            {
+                FirstName = "Joe",
+                LastName = "Mama",
+                Address = "The Place",
+                County = "There",
+                Household = 12,
+                Income = 12000
+            });
+
+            return list;
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -29,7 +49,8 @@ namespace FoodBank
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            var p = this.P;
+            dataGridView1.DataSource = p;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,6 +59,11 @@ namespace FoodBank
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
